@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LikeIT.Models.Like>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Likes history</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interest)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.Picture" width="100px" />
+                </td>
+                <td>
+                    <p>@item.DateAction</p>
+                </td>
+                <td>
+                    @{
+                        if (item.Interest == true)
+                        {
+                            <i class="fa fa-heart"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-remove"></i>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
